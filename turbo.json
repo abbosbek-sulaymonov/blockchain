@@ -1,0 +1,49 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalDependencies": [".env"],
+  "globalEnv": [
+    "NODE_ENV",
+    "API_PORT",
+    "API_HOST",
+    "RPC_URL",
+    "CHAIN_ID",
+    "PROGRESS_TRACKER_ADDRESS",
+    "INDEXER_START_BLOCK",
+    "INDEXER_POLL_MS",
+    "INDEXER_BATCH_SIZE",
+    "INDEXER_ENABLED",
+    "CORS_ORIGIN",
+    "NEXT_PUBLIC_CHAIN_ID",
+    "NEXT_PUBLIC_RPC_URL",
+    "NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_PROGRESS_TRACKER_ADDRESS",
+    "NEXT_PUBLIC_LEARN_TOKEN_ADDRESS",
+    "SEPOLIA_RPC_URL",
+    "SEPOLIA_PRIVATE_KEY",
+    "ETHERSCAN_API_KEY"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "artifacts/**", "types/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "blockchain-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A learn-by-building Web3 monorepo: Solidity contracts, a TypeScript event indexer, and a Next.js dApp.",
+  "packageManager": "pnpm@10.33.4",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "prettier --check \"**/*.{ts,tsx,js,json,md,sol}\" && turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "chain": "pnpm --filter @blockchain/contracts chain",
+    "deploy:local": "pnpm --filter @blockchain/contracts deploy:local",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md,sol}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,json,md,sol}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-solidity": "^2.1.0",
+    "turbo": "^2.10.12",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+.next
+dist
+artifacts
+cache
+typechain-types
+pnpm-lock.yaml
+packages/shared/src/generated

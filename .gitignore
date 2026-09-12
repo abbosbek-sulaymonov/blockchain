@@ -1,0 +1,42 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# builds
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# turbo
+.turbo/
+
+# hardhat
+artifacts/
+cache/
+typechain-types/
+ignition/deployments/chain-31337/
+
+# env & secrets — NEVER commit a private key
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+keystore/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# test output
+coverage/
