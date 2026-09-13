@@ -188,13 +188,14 @@ effort in Solidity.
 
 Both appear in this app, deliberately:
 
-| Data                      | Source   | Why                                    |
-| ------------------------- | -------- | -------------------------------------- |
-| This user's completions   | Contract | Must be current. One cheap `eth_call`. |
-| This user's LEARN balance | Contract | Same.                                  |
-| Leaderboard               | API      | Needs every event ever emitted.        |
-| Activity feed             | API      | History means scanning a block range.  |
-| Per-milestone stats       | API      | An aggregate across all users.         |
+| Data                      | Source   | Why                                        |
+| ------------------------- | -------- | ------------------------------------------ |
+| This user's completions   | Contract | Must be current. One cheap `eth_call`.     |
+| This user's LEARN balance | Contract | Same.                                      |
+| Leaderboard               | API      | Needs every event ever emitted.            |
+| Activity feed             | API      | History means scanning a block range.      |
+| Per-milestone stats       | API      | An aggregate across all users.             |
+| Another learner's profile | API      | Public history for an address you are not. |
 
 Get this split wrong and you either build something unusably slow (aggregates from the
 chain) or something that lies (live balances from a cache).

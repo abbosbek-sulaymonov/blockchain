@@ -2,6 +2,7 @@
 
 import { TOTAL_MILESTONES } from "@blockchain/shared";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 import { fetchLeaderboard } from "@/lib/api";
 import { formatRelative, shortenAddress } from "@/lib/format";
@@ -39,7 +40,14 @@ export function Leaderboard() {
         {data.map((row) => (
           <tr key={row.learner}>
             <td className="px-4 py-2 text-[--color-muted]">{row.rank}</td>
-            <td className="mono px-4 py-2">{shortenAddress(row.learner)}</td>
+            <td className="mono px-4 py-2">
+              <Link
+                href={`/learner/${row.learner}`}
+                className="transition hover:text-[--color-accent]"
+              >
+                {shortenAddress(row.learner)}
+              </Link>
+            </td>
             <td className="px-4 py-2">
               {row.completedCount} / {TOTAL_MILESTONES}
             </td>

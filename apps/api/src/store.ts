@@ -3,6 +3,7 @@ import {
   TOTAL_MILESTONES,
   type LeaderboardRow,
   type LearnerProgress,
+  type MilestoneCompletionStat,
   type MilestoneEvent,
 } from "@blockchain/shared";
 import type { Address } from "viem";
@@ -137,7 +138,7 @@ export class EventStore {
   }
 
   /** How many learners have completed each milestone — feeds the "hardest step" chart. */
-  completionsByMilestone(): { milestoneId: number; title: string; completions: number }[] {
+  completionsByMilestone(): MilestoneCompletionStat[] {
     return MILESTONES.map((milestone) => ({
       milestoneId: milestone.id,
       title: milestone.title,

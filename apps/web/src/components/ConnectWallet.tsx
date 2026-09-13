@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 import { shortenAddress } from "@/lib/format";
@@ -20,9 +21,13 @@ export function ConnectWallet() {
   if (isConnected && address) {
     return (
       <div className="flex items-center gap-3">
-        <span className="mono rounded-lg border border-[--color-border-subtle] bg-[--color-surface-raised] px-3 py-2 text-sm">
+        <Link
+          href={`/learner/${address}`}
+          title="View your progress"
+          className="mono rounded-lg border border-[--color-border-subtle] bg-[--color-surface-raised] px-3 py-2 text-sm transition hover:border-[--color-accent]"
+        >
           {shortenAddress(address)}
-        </span>
+        </Link>
         <button
           type="button"
           onClick={() => disconnect()}

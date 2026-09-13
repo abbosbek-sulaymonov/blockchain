@@ -3,6 +3,7 @@ import { ConnectWallet } from "@/components/ConnectWallet";
 import { IndexerStatusCard } from "@/components/IndexerStatusCard";
 import { Leaderboard } from "@/components/Leaderboard";
 import { MilestoneList } from "@/components/MilestoneList";
+import { MilestoneStats } from "@/components/MilestoneStats";
 import { NetworkBanner } from "@/components/NetworkBanner";
 import { TokenBalance } from "@/components/TokenBalance";
 
@@ -34,6 +35,14 @@ export default function HomePage() {
       <section className="mt-8">
         <h2 className="mb-3 text-lg font-semibold">Leaderboard</h2>
         <Leaderboard />
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-1 text-lg font-semibold">Where people get stuck</h2>
+        <p className="mb-3 text-sm text-[--color-muted]">
+          Share of indexed learners who have cleared each milestone.
+        </p>
+        <MilestoneStats />
       </section>
 
       <ActivityFeed />
