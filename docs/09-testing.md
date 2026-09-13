@@ -2,16 +2,18 @@
 
 Two test suites, two tools, two reasons.
 
-| Suite                | Tool                  | Runs against           |
-| -------------------- | --------------------- | ---------------------- |
-| `packages/contracts` | Hardhat + `node:test` | An in-process EVM      |
-| `apps/api`           | Vitest                | A stubbed chain client |
+| Suite                | Tool                  | Runs against                  |
+| -------------------- | --------------------- | ----------------------------- |
+| `packages/contracts` | Hardhat + `node:test` | An in-process EVM             |
+| `apps/api`           | Vitest                | A stubbed chain client        |
+| `apps/web`           | Vitest                | Pure helpers, stubbed `fetch` |
 
 ```bash
 pnpm test                                  # everything
 pnpm --filter @blockchain/contracts test   # contracts only
 pnpm --filter @blockchain/api test         # API only
 pnpm --filter @blockchain/api test:watch   # API, watch mode
+pnpm --filter @blockchain/web test         # web helpers only
 ```
 
 ## Why contract tests matter more than usual
@@ -184,7 +186,9 @@ Simulating a reorg against a real chain is painful. Against a stub it is three l
   random call sequences.
 - **Fork tests.** Running against a fork of real mainnet state, to test against real
   protocols instead of mocks.
-- **Frontend tests.** No component tests here; the components are deliberately thin.
+- **Component tests.** `apps/web` covers its formatting helpers and its API client against
+  a stubbed `fetch`, but renders nothing. The components are deliberately thin; testing
+  them would mean jsdom plus a wagmi mock, which is a project of its own.
 - **Gas snapshots.** Committing gas costs and failing CI when they regress.
 
 ## Writing a test in this repo

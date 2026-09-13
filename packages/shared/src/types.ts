@@ -23,6 +23,24 @@ export interface LearnerProgress {
   lastActivityAt: number | null;
 }
 
+/** `GET /api/progress/:address` — a learner's progress plus the events behind it. */
+export interface LearnerProgressDetail extends LearnerProgress {
+  events: MilestoneEvent[];
+}
+
+/** One row of `GET /api/stats/milestones` — how many learners cleared each step. */
+export interface MilestoneCompletionStat {
+  milestoneId: number;
+  title: string;
+  completions: number;
+}
+
+/** `GET /api/stats/milestones`. */
+export interface MilestoneStats {
+  stats: MilestoneCompletionStat[];
+  learners: number;
+}
+
 /** One row of `GET /api/leaderboard`. */
 export interface LeaderboardRow {
   rank: number;

@@ -159,7 +159,10 @@ The chain is not the only attack surface.
 - **The server holds no private key.** `createChainClient` builds a read-only public
   client. A backend that can sign is a backend worth stealing.
 - **Scope CORS.** `CORS_ORIGIN` defaults to `http://localhost:3000`, not `*`.
-- **Rate-limit public endpoints.** Not done here — worth adding if you deploy it.
+- **Rate-limit public endpoints.** `@fastify/rate-limit` caps each IP at `RATE_LIMIT_MAX`
+  requests per `RATE_LIMIT_WINDOW_MS`, with `/health` exempt so a load balancer probe never
+  trips it. Without a limit a public read API is a free amplifier: one HTTP loop becomes
+  thousands of upstream RPC calls, and the provider cuts _you_ off, not the attacker.
 - **Treat chain data as untrusted input.** A learner address in an event is attacker-chosen
   and goes into your HTML. React escapes it; string concatenation would not.
 

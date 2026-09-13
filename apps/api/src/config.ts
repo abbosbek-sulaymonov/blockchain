@@ -38,6 +38,18 @@ const envSchema = z.object({
     .default("true")
     .transform((value) => value !== "false"),
   CORS_ORIGIN: z.string().default("http://localhost:3000"),
+  /**
+   * Requests allowed per IP per window. A public read API with no limit is a free
+   * amplifier: one client can turn a cheap HTTP loop into thousands of RPC calls.
+   */
+  RATE_LIMIT_MAX: z.coerce.number().int().positive().default(120),
+  /** Rate limit window, in milliseconds. */
+  RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(60_000),
+  /** Set to "false" to disable the limiter, e.g. when running behind your own gateway. */
+  RATE_LIMIT_ENABLED: z
+    .string()
+    .default("true")
+    .transform((value) => value !== "false"),
 });
 
 export type AppConfig = z.infer<typeof envSchema>;

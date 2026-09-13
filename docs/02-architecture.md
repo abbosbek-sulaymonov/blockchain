@@ -117,8 +117,9 @@ Reads come from **two** places, deliberately:
 
 - **Live, per-user state** (has this address completed milestone 3? what is their balance?)
   is read straight from the contract. It must be current and it is cheap — one `eth_call`.
-- **Aggregates and history** (leaderboard, activity feed) come from the API. They are
-  expensive to compute and a few seconds of staleness costs nothing.
+- **Aggregates and history** (leaderboard, activity feed, per-milestone stats, and any
+  learner's public profile at `/learner/<address>`) come from the API. They are expensive
+  to compute and a few seconds of staleness costs nothing.
 
 Getting that split wrong is the most common architectural mistake in a first dApp. Reading
 aggregates from the chain makes the app crawl; reading live balances from a cache makes it

@@ -2,6 +2,7 @@
 
 import { getMilestone } from "@blockchain/shared";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 import { fetchRecentEvents } from "@/lib/api";
 import { formatRelative, shortenAddress } from "@/lib/format";
@@ -35,7 +36,9 @@ export function ActivityFeed() {
             className="flex items-center justify-between gap-4 px-4 py-3 text-sm"
           >
             <span className="min-w-0">
-              <span className="mono text-[--color-accent]">{shortenAddress(event.learner)}</span>{" "}
+              <Link href={`/learner/${event.learner}`} className="mono text-[--color-accent]">
+                {shortenAddress(event.learner)}
+              </Link>{" "}
               completed{" "}
               <strong className="font-medium">
                 {getMilestone(event.milestoneId)?.title ?? `milestone ${event.milestoneId}`}

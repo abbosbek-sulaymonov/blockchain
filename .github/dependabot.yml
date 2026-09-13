@@ -1,0 +1,21 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # One PR per ecosystem rather than a dozen — these versions move together anyway.
+      web3:
+        patterns: ["viem", "wagmi", "@nomicfoundation/*", "@openzeppelin/*", "hardhat"]
+      frontend:
+        patterns: ["next", "react", "react-dom", "@types/react*", "tailwindcss", "@tailwindcss/*"]
+      dev-tooling:
+        patterns: ["typescript", "prettier*", "turbo", "vitest", "tsx", "@types/node"]
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly

@@ -1,4 +1,10 @@
-import { MILESTONES, TOTAL_MILESTONES, type IndexerStatus } from "@blockchain/shared";
+import {
+  MILESTONES,
+  TOTAL_MILESTONES,
+  type IndexerStatus,
+  type LearnerProgressDetail,
+  type MilestoneStats,
+} from "@blockchain/shared";
 import type { FastifyInstance } from "fastify";
 import { isAddress, type Address } from "viem";
 import { z } from "zod";
@@ -68,10 +74,12 @@ export async function registerRoutes(app: FastifyInstance, context: RouteContext
     }
 
     const address = parsed.data.address as Address;
-    return {
+    const detail: LearnerProgressDetail = {
       ...store.progressFor(address),
       events: store.eventsFor(address),
     };
+
+    return detail;
   });
 
   /** Who has completed the most milestones. */
@@ -81,7 +89,7 @@ export async function registerRoutes(app: FastifyInstance, context: RouteContext
   });
 
   /** Completions per milestone — shows which step people get stuck on. */
-  app.get("/api/stats/milestones", async () => ({
+  app.get("/api/stats/milestones", async (): Promise<MilestoneStats> => ({
     stats: store.completionsByMilestone(),
     learners: store.learnerCount,
   }));
