@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@blockchain/tsconfig": "workspace:*",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "viem": "^2.56.3",
     "@blockchain/contracts": "workspace:*"
   },
