@@ -21,11 +21,11 @@
     "@nomicfoundation/hardhat-verify": "^3.1.0",
     "@nomicfoundation/hardhat-viem": "^3.0.9",
     "@nomicfoundation/hardhat-viem-assertions": "^3.1.2",
-    "@types/node": "^22.19.0",
+    "@types/node": "^26.6.2",
     "dotenv": "^17.2.3",
     "hardhat": "^3.16.0",
-    "tsx": "^4.23.13",
-    "typescript": "^5.9.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
     "viem": "^2.56.3"
   },
   "dependencies": {
