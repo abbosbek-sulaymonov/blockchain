@@ -24,10 +24,10 @@
   "devDependencies": {
     "@blockchain/tsconfig": "workspace:*",
     "typescript": "^5.9.3",
-    "viem": "^2.56.3",
+    "viem": "^2.57.2",
     "@blockchain/contracts": "workspace:*"
   },
   "peerDependencies": {
-    "viem": "^2.56.3"
+    "viem": "^2.57.2"
   }
 }
